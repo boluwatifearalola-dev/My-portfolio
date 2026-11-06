@@ -1,23 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>audio page</title>
-    <body>
-      <h1>freeCodeCamp Tunes</h1>
-      <h2>Can't Stay Down</h2>
-      <h4>Artist:Quincy Larson</h4>
-      <audio loop  controls></audio>
-      <section>
-        <h2>Crusing for a Musing</h2>
-        <h4>Artist:Quincy Larson</h4>
-        <audio loop controls></audio>
-      </section>
-      <section>
-        <h2>Scrathing the Surface</h2>
-        <h4>Artist:Quincy Larson</h4>
-        <audio loop controls></audio>
-      </section>
-    </body>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aralola | Web Developer for Small Businesses</title>
+  <meta name="description" content="Aralola builds clean, fast one-page websites for small businesses in Nigeria.">
+  <style>
+    :root {
+      --navy: #10223a;
+      --yellow: #f4c20d;
+      --paper: #ffffff;
+      --mist: #eef1f5;
+      --slate: #4a5668;
+      --line: #d5dbe4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--navy);
+      background: var(--paper);
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .wrap { width: 100%; max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Yellow stripe, like a Lagos danfo */
+    .stripe { height: 0.75rem; background: var(--yellow); border-bottom: 0.25rem solid var(--navy); }
+
+    header.site { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    header.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .brand { font-weight: 800; font-size: 1.25rem; text-decoration: none; letter-spacing: -0.01em; }
+    nav a { margin-left: 1rem; font-size: 0.95rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { text-decoration: underline; }
+
+    .hero { background: var(--navy); color: var(--paper); padding: 3rem 0 3.5rem; }
+    .hero h1 { font-size: clamp(2.25rem, 9vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; margin-bottom: 1.25rem; }
+    .hero p { font-size: 1.15rem; max-width: 34rem; color: #d9e1ec; margin-bottom: 2rem; }
+    .sign {
+      display: inline-block; background: var(--yellow); color: var(--navy); font-weight: 800;
+      padding: 0.4rem 0.9rem; border: 3px solid var(--navy); box-shadow: 4px 4px 0 var(--paper);
+      margin-bottom: 1.5rem; transform: rotate(-1.5deg);
+    }
+    .btn {
+      display: inline-block; background: var(--yellow); color: var(--navy); font-weight: 800; font-size: 1.05rem;
+      text-decoration: none; padding: 0.9rem 1.5rem; border-radius: 0.25rem; border: 3px solid var(--yellow);
+    }
+    .btn:hover { background: var(--paper); border-color: var(--paper); }
+    .btn.ghost { background: transparent; color: var(--paper); border-color: var(--paper); }
+    .btn.ghost:hover { background: var(--paper); color: var(--navy); }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    section { padding: 3rem 0; }
+    section.alt { background: var(--mist); }
+    h2 { font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+
+    .offer-list { list-style: none; }
+    .offer-list li { padding: 1.1rem 0; border-top: 2px solid var(--navy); }
+    .offer-list li:last-child { border-bottom: 2px solid var(--navy); }
+    .offer-list h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .offer-list p { color: var(--slate); }
+
+    .project { background: var(--paper); border: 2px solid var(--navy); padding: 1.25rem; margin-bottom: 1rem; }
+    .project h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .project p { color: var(--slate); margin-bottom: 0.75rem; }
+    .project .tags { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+    .project a { font-weight: 700; }
+    .project.soon { border-style: dashed; background: transparent; }
+
+    .about p { margin-bottom: 1rem; max-width: 36rem; }
+
+    .contact { background: var(--navy); color: var(--paper); }
+    .contact p { color: #d9e1ec; margin-bottom: 1.5rem; max-width: 34rem; }
+    .contact .links { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+
+    footer { padding: 1.5rem 0; font-size: 0.9rem; color: var(--slate); text-align: center; }
+
+    @media (min-width: 40rem) {
+      .hero { padding: 5rem 0 5.5rem; }
+      section { padding: 4rem 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <div class="stripe" aria-hidden="true"></div>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="#top">Aralola</a>
+      <nav aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="wrap">
+        <span class="sign">Now booking small businesses</span>
+        <h1>Your business, open online all day.</h1>
+        <p>I'm Aralola, a web developer in Nigeria. I build clean, fast one-page websites that show customers what you sell and how to reach you.</p>
+        <div class="actions">
+          <!-- Replace 2348101946482 with your number: country code + number, no + and no spaces. Example: 2348101946482 -->
+          <a class="btn" href="https://wa.me/2348101946482?text=Hi%20Aralola%2C%20I%20want%20a%20website%20for%20my%20business">Message me on WhatsApp</a>
+          <a class="btn ghost" href="#projects">See my work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <h2>What I build for you</h2>
+        <ul class="offer-list">
+          <li>
+            <h3>One-page business website</h3>
+            <p>Your business name, what you offer, prices, photos, and a contact button, all on one page that loads fast on any phone.</p>
+          </li>
+          <li>
+            <h3>WhatsApp ordering button</h3>
+            <p>Customers tap once and start a chat with you, with their message already typed.</p>
+          </li>
+          <li>
+            <h3>Live on the internet</h3>
+            <p>I publish the site for you and give you a link you can put on Instagram, flyers, and your WhatsApp status.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="alt">
+      <div class="wrap">
+        <h2>Projects</h2>
+
+        <article class="project">
+          <h3>freeCodeCamp Tunes</h3>
+          <p>A music page with a title, artist, and audio player for each track. Built while learning HTML through freeCodeCamp.</p>
+          <p class="tags">HTML</p>
+          <a href="https://github.com/boluwatifearalola-dev/My-projects">View the code on GitHub</a>
+        </article>
+
+        <!-- Copy this block for each new project. Remove the "soon" class once it is real. -->
+        <article class="project soon">
+          <h3>Sample business website (coming soon)</h3>
+          <p>A one-page site for a small shop, built as a demo of what I can make for you.</p>
+          <p class="tags">HTML, CSS</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="wrap">
+        <h2>About me</h2>
+        <p>I'm a self-taught beginner web developer in Nigeria. I started from zero in 2026 and I learn by building real pages, one at a time.</p>
+        <p>Most small businesses around me have no website. I want to change that by making simple, honest sites that help them get found and get orders.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Let's put your business online</h2>
+        <p>Tell me what you sell and I'll show you what your page could look like.</p>
+        <a class="btn" href="https://wa.me/2348101946482?text=Hi%20Aralola%2C%20I%20want%20a%20website%20for%20my%20business">Message me on WhatsApp</a>
+        <p><a href="https://githup.com/boluwatifearalola-dev">githup.com/boluwatifearalola-dev</a></p>
+        </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">&copy; 2026 Aralola</div>
+  </footer>
+
+</body>
 </html>
